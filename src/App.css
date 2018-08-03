@@ -1,0 +1,133 @@
+.App-header {
+  height: 150px;
+  padding: 20px;
+  color: white;
+  text-align: center;
+  font-size: 1.5em;
+  font-family: serif;
+}
+
+.App {
+  display: flex;
+  flex-flow: row wrap; 
+  justify-content: space-around;
+  margin: 20px;
+  padding: 20px;
+
+}
+body {
+  background: linear-gradient(to bottom, rgb(0, 0, 0), #ffffff)
+}
+
+.App-title {
+  font-size: 3.0em;
+}
+
+.well {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  min-height: 200px;
+  background-color: rgb(179, 179, 179)
+}
+
+.well input {
+  margin: 5px;
+}
+
+.meetings-container {
+  text-align: left;
+  width: 40%;
+  font-size: 1.5em;
+  background-color: whitesmoke;
+  border-radius: 7px;
+  box-shadow: 5px 10px 18px #888888;
+  padding: 15px;
+  margin:10px;
+  color:rgb(112, 112, 112);
+}
+
+.person-item {
+  margin-left: 10px;
+}
+
+.features-container {
+  text-align: right;
+  width: 40%;
+  font-size: 1.5em;
+  background-color: whitesmoke;
+  border-radius: 7px;
+  box-shadow: 5px 10px 18px #888888;
+  padding: 15px;
+  margin:15px;
+}
+
+.random-meeting-container {
+  margin-top: 5px;
+  color: rgb(112, 112, 112);
+  padding: 10px;
+  text-align: center;
+  border-top: 1px dotted rgb(112, 112, 112);
+  font-size: 0.7em;
+}
+
+.features-container input {
+  margin: 5px;
+}
+
+.meetings-amount-container {
+  margin-top: 5px;
+  color: rgb(112, 112, 112);
+  padding: 10px;
+  text-align: center;
+}
+
+.btn-danger, .btn-warning {
+  margin: 4px;
+}
+
+
+.count-container { 
+  height: 200px;
+  margin-top: 5px;
+  color: rgb(112, 112, 112);
+  padding: 10px;
+  text-align: center;
+  border-top: 1px dotted rgb(112, 112, 112);
+  font-size: 0.7em
+}
+
+.average-container {
+  height: 100px;
+  margin-top: 5px;
+  color: rgb(112, 112, 112);
+  padding: 10px;
+  text-align: center;
+  border-top: 1px dotted rgb(112, 112, 112);
+}
+
+.search-person-container {
+  height: 100px;
+  margin-top: 5px;
+  color: rgb(112, 112, 112);
+  padding: 10px;
+  font-size: 0.7em;
+  text-align: center;
+  border-top: 1px dotted rgb(112, 112, 112);
+}
+
+.search-result {
+  margin: 5px;
+  padding: 2px;
+}
+
+.meeting-item {
+  border-bottom: 1px dotted rgb(112, 112, 112);
+  list-style: none;
+}
+
+.counter-div {
+  margin:10px;
+  padding: 5px;
+}
