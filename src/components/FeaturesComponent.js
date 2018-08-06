@@ -8,8 +8,8 @@ import moment from "moment"
 
 const defaultState = {
     meetings: [],
-    totalMeetings: null,
-    averagePerMonth: null,
+    totalMeetings: 0,
+    averagePerMonth: 0,
     givenTopic: "",
     givenStartDate: "",
     givenEndDate: "",
@@ -56,6 +56,7 @@ class FeaturesComponent extends Component {
 
     handleDeleteAll = () => {
         deleteAllMeetings()
+        window.location.reload()
     }
 
     handleCreateRandom = async () => {
@@ -64,6 +65,7 @@ class FeaturesComponent extends Component {
             await createRandomMeetings(givenTopic, givenStartDate, givenEndDate, givenAttendingPeople)
             this.setState(defaultState)
         }
+        window.location.reload()
     }
 
     handleChange = (val, field) => {
@@ -96,7 +98,7 @@ class FeaturesComponent extends Component {
             <div className="features-container">
                 <div className="meetings-amount-container">
                     There are {totalMeetings} meetings in total <br /> <br />
-                    The average meetings per month is {averagePerMonth} <br /> <br />
+                    The average amount of meetings per month {averagePerMonth} <br /> <br />
                     <button type="button" className="btn btn-danger" onClick={this.handleDeleteAll}>Delete all meetings</button>
                 </div>
                 <div className="random-meeting-container">
@@ -121,7 +123,7 @@ class FeaturesComponent extends Component {
                     </div>
                 </div>
                 <AveragePeople />
-                <MeetingCounter allMeetings={this.state.meetings} />
+                <MeetingCounter />
                 <PersonSearch />
             </div>
         )

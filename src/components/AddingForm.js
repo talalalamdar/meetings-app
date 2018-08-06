@@ -50,7 +50,7 @@ class AddingForm extends Component {
         })
     }
 
-    createMeeting = () => {
+    onAddingMeeting = () => {
         const { topic, date, startTime, endTime, peopleAttending } = this.state
         if (topic && date && startTime && endTime && peopleAttending) {
             const body = this.state
@@ -101,7 +101,7 @@ class AddingForm extends Component {
                     {peopleAttendingItems}
                 </div>
                 <div className="form-group">
-                    <button type="button" className="btn btn-success" onClick={() => this.createMeeting()}><span className="glyphicon glyphicon-plus"></span> Create meeting</button>
+                    <button type="button" className="btn btn-success" onClick={() => this.onAddingMeeting()}><span className="glyphicon glyphicon-plus"></span> Create meeting</button>
                 </div>
             </form>
         )

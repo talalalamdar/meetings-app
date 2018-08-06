@@ -26,7 +26,7 @@ class ComingMeetings extends Component {
                 </li>
             )
         }).slice(0, 5)
-
+        
         this.setState({
             meetings: meetingsListItems
         })
