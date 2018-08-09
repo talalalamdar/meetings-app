@@ -1,13 +1,13 @@
-const mongoose = require("mongoose")
-const Schema = mongoose.Schema
-
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 let MeetingSchema = new Schema({
     topic: {
         type: String,
         required: [true, "Topic is required"]
     },
-    date : {
+    date: {
         type: String,
         required: [true, "Date is required"]
     },
@@ -31,9 +31,7 @@ let MeetingSchema = new Schema({
         type: [String],
         maxlength: 10
     }
-})
-
-
-const Meeting = mongoose.model("meeting", MeetingSchema)
-
-module.exports = Meeting
+});
+const Meeting = mongoose.model("meeting", MeetingSchema);
+exports.default = Meeting;
+//# sourceMappingURL=meetings.js.map

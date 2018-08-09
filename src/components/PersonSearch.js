@@ -20,8 +20,9 @@ class PersonSearch extends Component {
     handlePersonSearch = async () => {
         const { personName } = this.state
         let meetings = await getSortedMeetings().then(data => meetings = data)
+         // eslint-disable-next-line
         let findFirstMeeting = meetings.find(meeting => {
-            if (moment(meeting.date).isAfter() && meeting.peopleAttending.indexOf(personName) >= 0) {
+            if (moment(`${meeting.date} ${meeting.startTime}`, "YYYY-MM-DD HH:mm").isAfter() && meeting.peopleAttending.indexOf(personName) >= 0) {
                 return meeting
             }
         })

@@ -1,14 +1,15 @@
-const express = require("express")
+import * as express from "express"
+import * as bodyParser from "body-parser"
+import * as mongoose from "mongoose"
+import * as cors from "cors"
+
 const routes = require("./routes/api.js")
-const bodyParser = require("body-parser")
-const mongoose = require("mongoose")
-const cors = require("cors")
 
 const app = express()
 const port = 8080
 
 mongoose.connect("mongodb://localhost/meetings-app")
-mongoose.Promise = global.Promise
+//mongoose.Promise = global.Promise
 
 app.use(cors())
 

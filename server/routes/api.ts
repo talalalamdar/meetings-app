@@ -1,14 +1,15 @@
-const express = require("express")
-const router = express.Router()
-const Meeting = require("../models/meetings.js")
+import * as express from "express"
+import  Meeting  from "../models/meetings.js"
 
-router.get("/meetings", (req, res, next) => {
+const router = express.Router()
+
+router.get("/meetings", (req: express.Request, res: express.Response, next) => {
     Meeting.find({})
-        .then(data => res.send(data))
+        .then((data: Object[]) => res.send(data))
         .catch(next)
 })
 
-router.post("/meetings/add", (req, res, next) => {
+router.post("/meetings/add", (req: express.Request, res: express.Response, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*")
     Meeting.create(req.body)
         .then(meeting => {
@@ -17,11 +18,10 @@ router.post("/meetings/add", (req, res, next) => {
         .catch(next)
 })
 
-router.delete("/meetings/delete", (req, res, next) => {
-    Meeting.remove({}, (err, info) => {
+router.delete("/meetings/delete", (req: express.Request, res: express.Response, next) => {
+    Meeting.remove({}, function(err) {
         if (err) {
             console.log(err)
-            next
         } 
     })
         .then(res => {
