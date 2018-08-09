@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const routes = require("./routes/api.js");
+const api_js_1 = require("./routes/api.js");
 const app = express();
 const port = 8080;
 mongoose.connect("mongodb://localhost/meetings-app");
@@ -12,7 +12,7 @@ mongoose.connect("mongodb://localhost/meetings-app");
 app.use(cors());
 app.use(express.static('public'));
 app.use(bodyParser.json());
-app.use("/api", routes);
+app.use("/api", api_js_1.default);
 app.use(function (err, req, res, next) {
     res.status(422);
     res.send({ error: err.message });

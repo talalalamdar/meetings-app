@@ -13,11 +13,11 @@ let MeetingSchema = new Schema({
     },
     startTime: {
         type: String,
-        required: [true, "Date is required"]
+        required: [true, "Start time is required"]
     },
     endTime: {
         type: String,
-        required: [true, "Date is required"]
+        required: [true, "end time is required"]
     },
     repeatWeekly: {
         type: Boolean,

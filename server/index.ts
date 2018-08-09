@@ -2,8 +2,7 @@ import * as express from "express"
 import * as bodyParser from "body-parser"
 import * as mongoose from "mongoose"
 import * as cors from "cors"
-
-const routes = require("./routes/api.js")
+import routes from "./routes/api.js"
 
 const app = express()
 const port = 8080

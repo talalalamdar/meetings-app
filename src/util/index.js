@@ -47,7 +47,9 @@ export async function createRandomMeetings(givenTopic, givenStartDate, givenEndD
             endTime: randomEndTime,
             peopleAttending: []
         }
-        for (let j = 0;   j <= Math.random() * (10- 2) &&  body.peopleAttending.length <= 10 ; j++) {
+        let peopleAmount = body.peopleAttending.length
+        let randomNumber =  Math.floor(Math.random() * (givenAttendingPeople.length + 1))
+        for (let j = 0;   j <= randomNumber &&  peopleAmount <= 10 ; j++) {
             if (body.peopleAttending.indexOf(givenAttendingPeople[j]) === -1) {
                 body.peopleAttending.push(givenAttendingPeople[j])
             }

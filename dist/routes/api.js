@@ -27,5 +27,5 @@ router.delete("/meetings/delete", (req, res, next) => {
     })
         .catch(next);
 });
-module.exports = router;
+exports.default = router;
 //# sourceMappingURL=api.js.map

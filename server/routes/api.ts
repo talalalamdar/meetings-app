@@ -32,4 +32,4 @@ router.delete("/meetings/delete", (req: express.Request, res: express.Response, 
 
 
 
-module.exports = router
+export default router
