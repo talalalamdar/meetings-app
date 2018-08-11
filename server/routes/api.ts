@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get("/meetings", (req: express.Request, res: express.Response, next) => {
     Meeting.find({})
-        .then((data: Object[]) => res.send(data))
+        .then((data) => res.send(data))
         .catch(next)
 })
 
