@@ -48,7 +48,7 @@ class App {
                 .catch(next)
         })
 
-        router.delete("/meetings/delete", (req: express.Request, res: express.Response, next) => {
+        router.delete("/meetings/delete", (req: Request, res: Response, next) => {
             Meeting.remove({}, function(err) {
                 if (err) {
                     console.log(err)
