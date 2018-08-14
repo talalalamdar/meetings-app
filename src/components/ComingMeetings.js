@@ -37,7 +37,7 @@ class ComingMeetings extends Component {
     render() {
         return (
             <div className="meetings-container">
-                <h2> Up coming meetings: </h2><br />
+                <h2> Upcoming meetings: </h2><br />
                 {this.meetingsList()}
             </div>
         )
