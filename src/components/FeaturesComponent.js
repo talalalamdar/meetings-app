@@ -2,12 +2,11 @@ import React, { Component } from "react"
 import AveragePeople from "./AveragePeople"
 import MeetingCounter from "./MeetingCounter"
 import PersonSearch from "./PersonSearch"
-import { deleteAllMeetings, getAllMeetings, createRandomMeetings } from "../util";
+import { deleteAllMeetings, createRandomMeetings } from "../util";
 
 import moment from "moment"
 
 const defaultState = {
-    meetings: [],
     totalMeetings: 0,
     averagePerMonth: 0,
     givenTopic: "",
@@ -24,34 +23,21 @@ class FeaturesComponent extends Component {
     componentDidUpdate() {
         const addButton = document.getElementById("add-person-btn")
         if (addButton && this.state.givenAttendingPeople.length >= 10) {
-            addButton.setAttribute("disabled", "disabled")
+            addButton.setAttribute("disabled", "disabled")   // to disable the add button when there are 10 people 
         }
     }
 
-    async componentWillMount() {
-        await this.getTotalMeetings()
-        this.getAverage()
-    }
+    static getDerivedStateFromProps(nextProps) {
+        let totalMeetings = nextProps.meetings.length
 
-    getTotalMeetings = async () => {
-        let newState = 0
-        await getAllMeetings().then(data => {
-            newState = data.length
-            this.setState({
-                totalMeetings: newState,
-                meetings: data
-            })
-        })
-    }
-
-    getAverage = () => {
-        const { meetings } = this.state
         let currentMonthQuery = moment().format('YYYY-MM-DD')
-        let filteredMeetings = meetings.filter(meeting => moment(currentMonthQuery).isSame(meeting.date, "year"))
+        let filteredMeetings = nextProps.meetings.filter(meeting => moment(currentMonthQuery).isSame(meeting.date, "year"))
         let avg = filteredMeetings.length / 12
-        this.setState({
+
+        return {
+            totalMeetings: totalMeetings,
             averagePerMonth: Math.ceil(avg)
-        })
+        }
     }
 
     handleDeleteAll = () => {
@@ -122,9 +108,9 @@ class FeaturesComponent extends Component {
                         </div>
                     </div>
                 </div>
-                <AveragePeople />
-                <MeetingCounter />
-                <PersonSearch />
+                <AveragePeople meetings={this.props.meetings} />
+                <MeetingCounter meetings={this.props.meetings} />
+                <PersonSearch meetings={this.props.meetings} />
             </div>
         )
     }

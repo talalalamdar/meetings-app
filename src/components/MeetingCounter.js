@@ -1,10 +1,8 @@
 import React, { Component } from "react"
-import { getAllMeetings } from "../util";
-
-
 
 class MeetingCounter extends Component {
     state = {
+        meetings: [],
         MeetingTopicInput: "",
         topicCounter: 0
     }
@@ -15,9 +13,14 @@ class MeetingCounter extends Component {
         })
     }
 
+    static getDerivedStateFromProps(nextProps) {
+        return {
+            meetings: nextProps.meetings
+        }
+    }
+
     countMeeting = async () => {
-        const { MeetingTopicInput } = this.state
-        let meetings = await getAllMeetings().then(data => meetings = data)
+        const { MeetingTopicInput, meetings } = this.state
         let findTopic = meetings.filter(meeting => meeting.topic === MeetingTopicInput)
         this.setState({
             topicCounter: findTopic.length

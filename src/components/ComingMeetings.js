@@ -1,20 +1,24 @@
 import React, { Component } from "react"
-import { getSortedMeetings } from "../util";
 
 import moment from "moment";
 
 class ComingMeetings extends Component {
     state = {
-        meetings: [],
+        meetings: []
     }
 
-    componentWillMount() {
+    static getDerivedStateFromProps(nextProps) {
+        return {
+            meetings: nextProps.meetings
+        }
+    }
+
+    componentDidUpdate() {
         this.meetingsList()
     }
 
-    meetingsList = async () => {
-        let meetingsList = await getSortedMeetings().then(data => meetingsListItems = data)
-        let filteredMeetings = meetingsList.filter(meeting => moment(meeting.date + " " + meeting.startTime).isAfter())
+    meetingsList = () => {
+        let filteredMeetings = [...this.state.meetings].filter(meeting => moment(meeting.date + " " + meeting.startTime).isAfter())
         let meetingsListItems = filteredMeetings.map(meeting => {
             return (
                 <li key={meeting._id} className="meeting-item"> {meeting.topic} on {meeting.date}
@@ -27,16 +31,14 @@ class ComingMeetings extends Component {
             )
         }).slice(0, 5)
         
-        this.setState({
-            meetings: meetingsListItems
-        })
+        return meetingsListItems 
     }
 
     render() {
         return (
             <div className="meetings-container">
                 <h2> Up coming meetings: </h2><br />
-                {this.state.meetings}
+                {this.meetingsList()}
             </div>
         )
     }

@@ -1,10 +1,10 @@
 import React, { Component } from "react"
-import { getSortedMeetings } from "../util"
 
 import moment from "moment";
 
 class PersonSearch extends Component {
     state = {
+        meetings: [],
         personName: "",
         nextMeetingDate: "",
         startAt: "",
@@ -17,11 +17,16 @@ class PersonSearch extends Component {
         })
     }
 
-    handlePersonSearch = async () => {
-        const { personName } = this.state
-        let meetings = await getSortedMeetings().then(data => meetings = data)
+    static getDerivedStateFromProps(nextProps) {
+        return {
+            meetings: nextProps.meetings
+        }
+    }
+
+    handlePersonSearch = () => {
+        const { personName, meetings } = this.state
          // eslint-disable-next-line
-        let findFirstMeeting = meetings.find(meeting => {
+        let findFirstMeeting = meetings.find(meeting => {  // to find only the first next meeting for a person
             if (moment(`${meeting.date} ${meeting.startTime}`, "YYYY-MM-DD HH:mm").isAfter() && meeting.peopleAttending.indexOf(personName) >= 0) {
                 return meeting
             }

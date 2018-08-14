@@ -1,7 +1,6 @@
 import React, { Component } from "react"
-import { getSortedMeetings } from "../util"
 
-import moment from "moment" 
+import moment from "moment"
 
 class AveragePeople extends Component {
     state = {
@@ -9,36 +8,28 @@ class AveragePeople extends Component {
         average: 0
     }
 
-    async componentDidMount()  {
-        await this.getNextMeetings()
-         this.getAverage()
-    }
-
-    getNextMeetings = async () => {
-        let meetings = []
-        await getSortedMeetings().then(data => meetings = data)
-        let filteredMeetings = [...meetings].filter(meeting => moment(meeting.date + " " + meeting.startTime).isAfter())
-    
+    static getDerivedStateFromProps(nextProps) {
+        // getting only the upcoming meetings 
+        let filteredMeetings = nextProps.meetings.filter(meeting => moment(meeting.date + " " + meeting.startTime).isAfter())
+        // pushing the first twenty meetings
         let nextTwenty = []
         for (let i = 0; i < 20; i++) {
             nextTwenty.push(filteredMeetings[i])
         }
-        this.setState({
-            nextTwentyMeetings: nextTwenty
-        })
-    }
 
-    getAverage =  () => {
-        let counter = 0     
-        this.state.nextTwentyMeetings.forEach(meeting => {
+        // calculate how many people are attending in the next 20 meetings 
+        let counter = 0
+        nextTwenty.forEach(meeting => {
             if (meeting) {
-                counter += meeting.peopleAttending.length 
-            }     
+                counter += meeting.peopleAttending.length
+            }
         })
         const avg = Math.ceil(counter / 20)
-        this.setState({
+
+        return {
+            nextTwentyMeetings: nextTwenty,
             average: avg
-        })
+        }
     }
 
     render() {

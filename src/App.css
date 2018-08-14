@@ -13,7 +13,6 @@
   justify-content: space-around;
   margin: 20px;
   padding: 20px;
-
 }
 body {
   background: linear-gradient(to bottom, rgb(0, 0, 0), #ffffff)
@@ -87,9 +86,7 @@ body {
   margin: 4px;
 }
 
-
 .count-container { 
-  height: 200px;
   margin-top: 5px;
   color: rgb(112, 112, 112);
   padding: 10px;
@@ -99,7 +96,6 @@ body {
 }
 
 .average-container {
-  height: 100px;
   margin-top: 5px;
   color: rgb(112, 112, 112);
   padding: 10px;
@@ -108,7 +104,6 @@ body {
 }
 
 .search-person-container {
-  height: 100px;
   margin-top: 5px;
   color: rgb(112, 112, 112);
   padding: 10px;

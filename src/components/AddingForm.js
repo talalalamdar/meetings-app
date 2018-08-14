@@ -18,8 +18,8 @@ class AddingForm extends Component {
 
     componentDidUpdate() {
         const addButton = document.getElementById("add-person-btn-form")
-        if (addButton && this.state.peopleAttending.length >= 10) {
-            addButton.setAttribute("disabled", "disabled")
+        if (addButton && this.state.peopleAttending.length >= 10) { 
+            addButton.setAttribute("disabled", "disabled")   // to disable the add button when it reaches 10 people
         }
     }
 
@@ -54,9 +54,9 @@ class AddingForm extends Component {
         const { topic, date, startTime, endTime, peopleAttending } = this.state
         if (topic && date && startTime && endTime && peopleAttending) {
             const body = this.state
-            createMeeting(body)
-        }
-        this.setState(defaultState)
+            createMeeting(body)  // create the meeting function
+            this.setState(defaultState) // reset the form  
+        } 
     }
 
     render() {
